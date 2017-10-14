@@ -1,0 +1,185 @@
+body
+	color: #515151;
+	font-family: 'Crimson Text', serif;
+	font-size: 1.4em;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	//background: #f2f2f2;
+	//background-color: #1E1A25;
+	/*color: white;*/
+	display:flex;
+	min-height:100vh;	
+	background: rgba(0, 0, 0, 0);
+
+*
+	box-sizing: border-box;
+	padding:0;
+	margin:0;
+a
+	color: #0098d7;
+	/*text-decoration: underline;*/
+	text-decoration: none;
+p
+	display: block;
+	-webkit-margin-before: 1em;
+	-webkit-margin-after: 1em;
+	-webkit-margin-start: 0px;
+	-webkit-margin-end: 0px;
+	line-height: 160%;
+
+input[type="submit"]
+	cursor: pointer;
+	font-size: 13px;
+	font-weight: bold;
+	border-radius: 5px;
+	background-color: #2ECC71;
+	border: none;
+	width: 50%;
+	height: 40px;
+	color: white;
+	border-radius: 5px;
+	border: 1px solid #4a993e;
+	margin: auto;
+	&:hover
+		opacity: 0.8;
+
+#Upload
+	width: 90%;
+	margin: auto;	
+	h1
+		text-align: center;
+		
+	#form1
+		margin: auto;
+		width: 100%;		
+		#Bk
+			background-color: transparent;
+			width: 100%;
+			height: 50vh;
+			position: relative;
+			z-index: 4;
+			border: 2px dashed #d4d4d4;
+			overflow: hidden;
+			transition: .2s;
+			display: -ms-flexbox;
+			display: flex;
+			-ms-flex-wrap: wrap;
+			flex-wrap: wrap;
+			margin: auto auto;
+			transition:all 0.2s ease;
+			#filex
+				cursor: pointer;
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				z-index: 100;
+				opacity: 0;
+				top: 0;
+		input
+			margin-top:10px;
+		
+	#form1 #Bk .input-co-img
+		width: 100%;
+		margin: auto;
+		text-align: center;
+	#form1 #sub 
+		margin-left: 25%;
+
+
+
+ul .browse-file
+	/*width: 50%;*/
+	cursor: pointer;
+	list-style: none;
+	border: 1px solid #e5e5e5;
+	border-width: 1px 0;
+	text-align: left;
+	padding: 7px 2px 6px;
+	margin: 0 0px -1px 0px;
+	line-height: 32px;
+	position:relative
+	&:hover
+		background: rgba(230, 230, 230, 1)
+
+#listfile
+	width: 70%;
+	margin: auto;
+	font-size: .7em;
+	#listfile_cont
+		display: flex;
+		flex-wrap: wrap;
+		padding-bottom: 10px;
+		color:#455A64;
+		border-bottom: 1px solid #e0e1e2;
+		padding: 5px;
+		.sizefile
+			width: 50%;
+			text-align: right;
+			margin: auto;
+		.namefile
+			width: 50%;
+			text-align: left;
+			margin: auto;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			word-break: break-all;
+			overflow: hidden;
+
+.filename-col .hola			
+	display: block;
+	-webkit-margin-before: 0em;
+	-webkit-margin-after: 0em;
+	-webkit-margin-start: 0px;
+	-webkit-margin-end: 0px;
+
+.xdx
+	background-image: url(../img/sprite.png);	
+	background-repeat: no-repeat;
+	background-position: 0 16px;
+	background-color: transparent;
+	vertical-align: bottom;
+	border: 1px solid transparent;
+	display: block;
+	background-position: left -1569px;
+	height: 32px;
+	line-height: 25px;
+	&:before
+		content:"";
+		padding-right: 36px;
+		
+.folder{
+	background-position: left -380px;
+}
+	
+.exe{
+	background-position: left -1804px;
+}
+.wmv,.mp4,.MP4,.mpg,.mkv,.flv{
+	background-position: left -2214px;	
+}
+.jpg,.png,.gif	{
+	background-position: left -3100px;
+}
+.txt{	
+	background-position: left -3744px;
+}
+.rar,.zip,.tar,.gz{
+	background-position: left -1906px;
+}
+.iso{	
+	background-position: left -2009px;
+}
+.db{
+	background-position: left -3505px;	
+}
+.acrobat_32{
+	background-position: left -1600px;
+}
+
+
+
+@media screen and (max-width:800px)
+	#Upload
+		width: 98%;
+		margin: auto;	

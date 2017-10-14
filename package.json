@@ -1,0 +1,84 @@
+{
+  "name": "uploadaderjr_desktop",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron main.js",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
+    "dist22": "electron-builder --publish --platform win32 --arch x64",
+    "forge": "electron-forge start",
+    "package-win": "electron-forge package --platform=win32 --arch=ia32",
+    "make": "electron-forge make",
+    "nn2": "electron-packager . --asar=true --platform=win32 --arch=x64 --version=1.3.3 --ignores=node_modules/electron-* MyApp",
+    "nn3": "electron-packager E:/Coder/UploadaderJr_Desktop/ --platform=win32 --arch=x64 uploadaderjr_desktop"
+  },
+  "author": "Rockjs <Rockjs@gmail.com>",
+  "license": "ISC",
+  "build": {
+    "publish": [{
+       "provider": "github",
+       "owner": "iffy",
+       "repo": "electron-updater-example"
+    }],
+    "appId": "com.uploader.rockjs",
+    "asar": true,
+    "win": {
+      "target": "NSIS",
+      "icon": "build/main-icon"
+    }
+  },
+  "dependencies": {
+    "electron-log": "^2.2.9",
+    "electron-squirrel-startup": "^1.0.0",
+    "electron-updater": "^2.12.1",
+    "node-notifier": "^5.1.2",
+    "systeminformation": "^3.30.6"
+  },
+  "devDependencies": {
+    "electron": "^1.7.9",
+    "electron-builder": "^19.36.0",
+    "electron-is-dev": "^0.3.0",
+    "electron-packager": "^9.1.0",
+    "electron-reload": "^1.2.2",
+    "electron-winstaller": "^2.6.3",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-stylus": "^2.6.0"
+  },
+  "config": {
+    "forge": {
+      "make_targets": {
+        "win32": [
+          "squirrel"
+        ],
+        "darwin": [
+          "dmg"
+        ],
+        "linux": [
+          "deb"
+        ]
+      },
+      "electronPackagerConfig": {
+        "asar": true,
+        "icon": "build/main-icon"
+      },
+      "electronInstallerDMG": {
+        "icon": "build/main-icon.icns"
+      },
+      "electronWinstallerConfig": {
+        "name": ""
+      },
+      "electronInstallerDebian": {},
+      "electronInstallerRedhat": {},
+      "github_repository": {
+        "owner": "",
+        "name": ""
+      },
+      "windowsStoreConfig": {
+        "packageName": ""
+      }
+    }
+  }
+}

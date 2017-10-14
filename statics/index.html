@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Hello Electron</title>   
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="../statics/css/style.css">
+	<script> window.$ = window.jQuery = require("../statics/js/jquery-3.1.1.min.js") </script>
+</head>
+<body>
+	<section id="Upload">				
+		<form method="POST" enctype="multipart/form-data" id="form1">
+			<h1 id="notify"> Upload Files</h1>
+			<div id="Bk">
+				<div id="speed"></div>
+				<div id="spx" class="input-co-img">Subir Archivo</div>
+				<div id="time"></div>
+				<progress max="100" value="0" style="display:none" id="progress"></progress>
+				<input type="file" name="archivo" id="filex" multiple="">
+			</div>
+		<input type="submit" id="sub">
+		<button id="cancel" style="display:none;">Cancel</button>
+		</form>
+		<a href="prueba1.html">otrasasa</a>
+		<!--<p class="stats"></p>
+		<div id="listfile"></div>
+		  <video autoplay></video>-->		
+	</section>
+	<script> require('../statics/js/index.js') </script>
+</body>
+</html>

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en" class="responsive desktop">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Zulip</title>
+  <link rel="stylesheet" href="css/main.css" type="text/css" media="screen">
+
+  <style type="text/css">
+
+  html,
+body {
+    height: 100%;
+    margin: 0;
+    cursor: default;
+    user-select: none;
+}
+
+#content {
+    display: flex;
+    height: 100%;
+    background: #eee url(../img/ic_loading.gif) no-repeat;
+    background-size: 60px 60px;
+    background-position: center;
+}
+
+#sidebar {
+    background: #222c31;
+    width: 54px;
+    padding: 27px 0 20px 0;
+    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+    -webkit-app-region: drag;
+    overflow: hidden;
+}
+
+@font-face {
+    font-family: 'Material Icons';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Material Icons'), local('MaterialIcons-Regular'), url(../fonts/MaterialIcons-Regular.ttf) format('truetype');
+}
+
+
+/*******************
+ *   Left Sidebar  *
+ *******************/
+
+#tabs-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.material-icons {
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    /* Preferred icon size */
+    font-size: 24px;
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+}
+
+.action-button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+}
+
+.action-button:hover {
+    cursor: pointer;
+}
+
+.action-button i {
+    color: #6c8592;
+    font-size: 28px;
+}
+
+.action-button:hover i {
+    color: #98a9b3;
+}
+
+.tab:first-child {
+    margin-top: 8px;
+}
+
+.tab {
+    position: relative;
+    margin: 2px 0;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.tab .server-icons {
+    border-radius: 50%;
+    width: 30px;
+    padding: 3px;
+    height: 30px;
+    vertical-align: top;
+}
+
+.tab .server-tab {
+    width: 100%;
+    height: 35px;
+    position: relative;
+    margin: 5px 0 2px 0;
+    z-index: 11;
+    line-height: 31px;
+    color: #eee;
+    text-align: center;
+    overflow: hidden;
+    opacity: 0.6;
+    padding: 2px 0;
+}
+
+.tab .server-tab:hover {
+    opacity: 0.8;
+}
+
+.tab.functional-tab {
+    height: 46px;
+    padding: 0;
+}
+
+.tab.functional-tab.active .server-tab {
+    padding: 2px 0;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.25);
+}
+
+.tab.functional-tab .server-tab i {
+    font-size: 28px;
+    line-height: 36px;
+}
+
+.tab.active .server-tab {
+    opacity: 1;
+    background-color: #648478;
+}
+
+.tab .server-tab-badge.active {
+    border-radius: 9px;
+    min-width: 11px;
+    padding: 0 3px;
+    height: 17px;
+    background-color: #f44336;
+    font-size: 10px;
+    font-family: sans-serif;
+    position: absolute;
+    right: 5px;
+    z-index: 15;
+    top: 6px;
+    float: right;
+    color: #fff;
+    text-align: center;
+    line-height: 17px;
+    display: block;
+    right: 0;
+}
+
+.tab .server-tab-badge {
+    display: none;
+}
+
+.tab .server-tab-badge.close-button {
+    width: 16px;
+    padding: 0;
+}
+
+.tab .server-tab-badge.close-button i {
+    font-size: 13px;
+    line-height: 17px;
+}
+
+#add-tab {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.tab .server-tab-shortcut {
+    color: #648478;
+    font-size: 12px;
+    text-align: center;
+    font-family: sans-serif;
+    margin-bottom: 5px;
+}
+
+
+/*******************
+ *   Webview Area  *
+ *******************/
+
+#webviews-container {
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+webview {
+    opacity: 1;
+    transition: opacity 0.3s ease-in;
+    flex-grow: 1;
+}
+
+webview.onload {
+    transition: opacity 1s cubic-bezier(0.95, 0.05, 0.795, 0.035);
+}
+
+webview.disabled {
+    flex: 0 1;
+    height: 0;
+    width: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease-out;
+}
+
+webview:focus {
+    outline: 0px solid transparent;
+}
+
+
+/* Tooltip styling */
+
+#reload-tooltip,
+#setting-tooltip {
+    font-family: sans-serif;
+    background: #222c31;
+    margin-left: 68px;
+    padding: 6px 8px;
+    position: absolute;
+    margin-top: 0px;
+    z-index: 1000;
+    color: white;
+    border-radius: 4px;
+    text-align: center;
+    width: 55px;
+    font-size: 14px;
+}
+
+#reload-tooltip:after,
+#setting-tooltip:after {
+    content: " ";
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-right: 8px solid #222c31;
+    position: absolute;
+    top: 7px;
+    right: 68px;
+}
+
+#collapse-button {
+    bottom: 30px;
+    left: 20px;
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    background: #222c31;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: #999 1px 1px;
+}
+
+#collapse-button i {
+    color: #efefef;
+}
+
+#main-container {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Full screen Popup container  */
+.popup .popuptext {
+    visibility: hidden;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 9px 0;
+    position: absolute;
+    z-index: 1000;
+    font-family: arial;
+    width: 240px;
+    top: 15px;
+    height: 20px;
+    left: 43%;
+}
+
+.popup .show {
+    visibility: visible;
+    animation: cssAnimation 0s ease-in 5s forwards;
+    animation-fill-mode: forwards;
+}
+
+@keyframes cssAnimation {
+    from {
+        opacity: 0;
+    }
+    to {
+        width: 0;
+        height: 0;
+        overflow: hidden;
+        opacity: 1;
+    }
+}
+    
+
+
+  </style>
+</head>
+
+<body>
+  <div id="content">
+    <div class="popup">
+      <span class="popuptext hidden" id="fullscreen-popup"></span>
+  </div>
+  <div id="sidebar">
+    <div id="view-controls-container">
+      <div id="tabs-container"></div>
+      <div id="add-tab" class="tab functional-tab">
+        <div class="server-tab" id="add-action">
+          <i class="material-icons">add</i>
+        </div>
+      </div>
+    </div>
+    <div id="actions-container">
+      <div class="action-button" id="reload-action">
+        <i class="material-icons md-48">refresh</i>
+        <span id="reload-tooltip" style="display:none">Reload</span>
+      </div>
+      <div class="action-button" id="settings-action">
+        <i class="material-icons md-48">settings</i>
+        <span id="setting-tooltip" style="display:none">Settings</span>
+      </div>
+    </div>
+  </div>
+  <div id="main-container">
+    <div id="webviews-container"></div>
+  </div>
+  </div>
+</body>
+<script src="js/main.js"></script>
+
+</html>

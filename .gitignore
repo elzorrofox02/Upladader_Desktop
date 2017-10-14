@@ -1,0 +1,69 @@
+*.pyc
+__pycache__/
+static/Files/
+conf.json
+node_modules/
+other/
+urls.txt
+uploadaderjr_desktop-1.0.0.tgz
+dist/
+create_instalador.js
+gulpfile.js
+
+
+# -- Sistemas Operativos ------------------------------
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+
+!.gitignore
+!.htaccess
+*~
+
+
+# sublimetext
+/*.sublime-project
+*.sublime-workspace
+
+# virtualenv
+venv/
+ENV/
+
+# pyenv
+.python-version
+
+# Translations
+*.mo
+*.pot
+
+
+# Installer logs
+pip-log.txt
+
+# C extensions
+*.so
+
+
+# vim
+.*.sw[a-z]
+*.un~
+Session.vim
+.netrwhist
+
+# textmate
+*.tmproj
+*.tmproject
+tmtags
+
+# Mac OS X
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.Spotlight-V100
+.Trashes
