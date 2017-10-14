@@ -4,14 +4,11 @@ const path = require('path')
 const url  = require('url')
 const setIpcMain = require('./libs/ipcMainEvent')
 const menus = require('./libs/menu')
+const {appUpdater} = require('./libs/autoUpdater')
 let win
-
-
-const {appUpdater} = require('./libs/autoUpdater');
 
 //dev
 //require('electron-reload')(__dirname);
-
 app.on('ready', () => {
 	const {width, height} = electron.screen.getPrimaryDisplay().size
 	//const {width, height} = electron.screen.getPrimaryDisplay().workAreaSize
@@ -104,5 +101,3 @@ exports.openWindow = () => {
 		slashes: true
 	}))
 }
-
-

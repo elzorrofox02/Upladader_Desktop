@@ -1,9 +1,10 @@
 {
-  "name": "uploadaderjr_desktop",
+  "name": "Upladader_Desktop",
   "version": "1.0.0",
-  "description": "",
+  "description": "Pra subir archivos",
   "main": "main.js",
   "scripts": {
+    "start2":"./node_modules/.bin/electron .",
     "start": "electron main.js",
     "pack": "electron-builder --dir",
     "dist": "electron-builder",
@@ -12,7 +13,7 @@
     "package-win": "electron-forge package --platform=win32 --arch=ia32",
     "make": "electron-forge make",
     "nn2": "electron-packager . --asar=true --platform=win32 --arch=x64 --version=1.3.3 --ignores=node_modules/electron-* MyApp",
-    "nn3": "electron-packager E:/Coder/UploadaderJr_Desktop/ --platform=win32 --arch=x64 uploadaderjr_desktop"
+    "nn3": "electron-packager E:/Coder/UploadaderJr_Desktop/ --platform=win32 --arch=x64 Upladader_Desktop"
   },
   "author": "Rockjs <Rockjs@gmail.com>",
   "license": "ISC",

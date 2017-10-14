@@ -9,6 +9,10 @@ uploadaderjr_desktop-1.0.0.tgz
 dist/
 create_instalador.js
 gulpfile.js
+dev-app-update.yml
+package-lock.json
+
+
 
 
 # -- Sistemas Operativos ------------------------------
