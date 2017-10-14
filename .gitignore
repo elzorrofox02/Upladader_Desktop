@@ -11,6 +11,7 @@ create_instalador.js
 gulpfile.js
 dev-app-update.yml
 package-lock.json
+publish.sh
 
 
 
